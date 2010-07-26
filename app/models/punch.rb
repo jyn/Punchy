@@ -1,5 +1,5 @@
 class Punch < ActiveRecord::Base
-	acts_as_taggable_on :projects, :clients, :actions
+	acts_as_taggable_on :projects, :clients, :actions, :people
 	
 	validates_presence_of :body
 	
@@ -14,7 +14,8 @@ class Punch < ActiveRecord::Base
 			self.duration_in_minutes = parse_for_time(body)
 			self.project_list = parse_for_projects(body)
 			self.client_list = parse_for_clients(body)
-			self.action_list = parse_for_actions(body)
+      self.action_list = parse_for_actions(body)
+      self.person_list = parse_for_people(body)
 			self.save
 		end
 	end
@@ -30,6 +31,10 @@ class Punch < ActiveRecord::Base
 	def client_reg
 		/@\w+/
 	end
+	
+	def people_reg
+	  /\!\w+/
+  end
 	
 	def self.per_page
 		10
@@ -87,5 +92,15 @@ class Punch < ActiveRecord::Base
 			a = a.gsub! "*", ""
 		end
 		return actions
+	end
+	
+	
+	def parse_for_people(text)
+		reg = people_reg
+		people = text.scan(reg)
+		people.each do |p|
+			p = p.gsub! "!", ""
+		end
+		return people
 	end
 end

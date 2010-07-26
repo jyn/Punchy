@@ -25,6 +25,8 @@
 		#project
 		<br />
 		@client
+		<br />
+		!person
 		<h4>Time Formats</h4>
 		30 minutes
 		<br />
@@ -52,13 +54,24 @@
 			<li><a href="<%= action_path(:act => action.name) %>" class="action important"><%= action %></a> (<%= hours_for(action) %>)</li>
 		<% end %>
 		</ul>
+		
+		<h3>Recent People</h3>
+		<ul class="projects">
+		<% Punch.person_counts.each do |person| %>
+			<li><a href="<%= people_path(:person => person.name) %>" class="person important"><%= person %></a> (<%= hours_for(person) %>)</li>
+		<% end %>
+		</ul>
 	</div>
 	<div class="clear"></div>
 	<div class="grid_12" id="footer">
 		Created by <a href="http://www.mazondo.com">Ryan Quinn</a>
 		<br />
 		<a href="http://www.opensourcerails.com/projects/607989-Punchy" title="Open Source Rails - Punchy">Punchy on Open Source Rails</a> | <a href="http://www.github.com/mazondo/Punchy">Punchy on Github</a>
-		
+		<br/>
+		<br/>
+		Modified by <a href="http://github.com/jyn">Jason Nah</a>
+		<br />
+    <a href="http://www.github.com/jyn/Punchy">Punchy (with people) on Github</a>
 	</div>
 </div>
 

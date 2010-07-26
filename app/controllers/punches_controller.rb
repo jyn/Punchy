@@ -124,6 +124,9 @@ class PunchesController < ApplicationController
 		when "*"
 			term = params[:term].gsub("*", "")
 			@tags = Punch.action_counts.where("tags.name like ?", "%#{term}%").collect! {|a| "*" + a.name}
+		when "!"
+			term = params[:term].gsub("!", "")
+			@tags = Punch.person_counts.where("tags.name like ?", "%#{term}%").collect! {|p| "!" + p.name}			
 		else
 			term = params[:term]
 	  	@tags = Punch.project_counts.where("tags.name like ?", "%#{term}%").collect! {|p| "\#" + p.name}

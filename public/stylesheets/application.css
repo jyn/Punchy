@@ -117,6 +117,10 @@ h2.important a.home {
 	background: green;
 }
 
+.person {
+	background: purple;
+}
+
 .action:hover {
 	background: darkblue;
 	text-decoration: none;
@@ -129,6 +133,11 @@ h2.important a.home {
 
 .client:hover {
 	background: darkgreen;
+	text-decoration: none;
+}
+
+.person:hover {
+	background: violet;
 	text-decoration: none;
 }
 

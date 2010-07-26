@@ -10,6 +10,9 @@ Timish::Application.routes.draw do |map|
   match 'projects' => 'projects#index', :as => :projects
   match 'projects/:project' => 'projects#show', :as => :project
   
+  match 'people' => 'people#index', :as => :people
+  match 'people/:person' => 'people#show', :as => :people
+  
   match 'actions' => 'actions#index', :as => :actions
   match 'actions/:act' => 'actions#show', :as => :action #had to use act because action is taken by rails
   
